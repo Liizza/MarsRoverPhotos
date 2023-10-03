@@ -16,6 +16,21 @@
 		6EB5C5A02AC58CF20005236E /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EB5C59F2AC58CF20005236E /* HomeViewController.storyboard */; };
 		6EB5C5A22AC58D1D0005236E /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C5A12AC58D1D0005236E /* Storyboarded.swift */; };
 		6EB5C5A42AC58E390005236E /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C5A32AC58E390005236E /* HomeCoordinator.swift */; };
+		6EB5C5B62ACB26CE0005236E /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C5B42ACB26CE0005236E /* PhotoTableViewCell.swift */; };
+		6EB5C5B72ACB26CE0005236E /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB5C5B52ACB26CE0005236E /* PhotoTableViewCell.xib */; };
+		6EB5C5BF2ACC04490005236E /* PhotoCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C5BE2ACC04490005236E /* PhotoCellModel.swift */; };
+		6EB5C5C12ACC0A010005236E /* HomeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C5C02ACC0A010005236E /* HomeViewViewModel.swift */; };
+		6EB5C5C42ACC11B00005236E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 6EB5C5C32ACC11B00005236E /* RxCocoa */; };
+		6EB5C5C62ACC11B00005236E /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 6EB5C5C52ACC11B00005236E /* RxRelay */; };
+		6EB5C5C82ACC11B00005236E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6EB5C5C72ACC11B00005236E /* RxSwift */; };
+		6EB5C5CA2ACC13FC0005236E /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C5C92ACC13FC0005236E /* PhotoModel.swift */; };
+		6EB5C5CC2ACC20F90005236E /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C5CB2ACC20F90005236E /* UIFont.swift */; };
+		6EB5C5CE2ACC245F0005236E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C5CD2ACC245F0005236E /* UIColor.swift */; };
+		6EB5C5D02ACC29DB0005236E /* CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C5CF2ACC29DB0005236E /* CGColor.swift */; };
+		6EB5C5D22ACC2AC90005236E /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C5D12ACC2AC90005236E /* UIView.swift */; };
+		6EB5C5D82ACC50920005236E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C5D72ACC50920005236E /* Date.swift */; };
+		6EB5C5DB2ACC779B0005236E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6EB5C5DA2ACC779B0005236E /* Kingfisher */; };
+		6EB5C5DD2ACC7B3F0005236E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C5DC2ACC7B3F0005236E /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +45,17 @@
 		6EB5C59F2AC58CF20005236E /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
 		6EB5C5A12AC58D1D0005236E /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		6EB5C5A32AC58E390005236E /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		6EB5C5B42ACB26CE0005236E /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		6EB5C5B52ACB26CE0005236E /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
+		6EB5C5BE2ACC04490005236E /* PhotoCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellModel.swift; sourceTree = "<group>"; };
+		6EB5C5C02ACC0A010005236E /* HomeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewModel.swift; sourceTree = "<group>"; };
+		6EB5C5C92ACC13FC0005236E /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		6EB5C5CB2ACC20F90005236E /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		6EB5C5CD2ACC245F0005236E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		6EB5C5CF2ACC29DB0005236E /* CGColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColor.swift; sourceTree = "<group>"; };
+		6EB5C5D12ACC2AC90005236E /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		6EB5C5D72ACC50920005236E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		6EB5C5DC2ACC7B3F0005236E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +63,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EB5C5DB2ACC779B0005236E /* Kingfisher in Frameworks */,
+				6EB5C5C82ACC11B00005236E /* RxSwift in Frameworks */,
+				6EB5C5C62ACC11B00005236E /* RxRelay in Frameworks */,
+				6EB5C5C42ACC11B00005236E /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,12 +92,14 @@
 		6EB5C5862AC5892A0005236E /* MarsRoverPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				6EB5C5DE2ACC7B640005236E /* Extensions */,
 				6EB5C5A82AC591B50005236E /* Common */,
 				6EB5C5A62AC591190005236E /* Scenes */,
 				6EB5C5A52AC591020005236E /* Main */,
 				6EB5C5902AC5892C0005236E /* Assets.xcassets */,
 				6EB5C5922AC5892C0005236E /* LaunchScreen.storyboard */,
 				6EB5C5952AC5892C0005236E /* Info.plist */,
+				6EB5C5C92ACC13FC0005236E /* PhotoModel.swift */,
 			);
 			path = MarsRoverPhotos;
 			sourceTree = "<group>";
@@ -93,8 +125,10 @@
 		6EB5C5A72AC591500005236E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6EB5C5DF2ACC7B880005236E /* PhotoCell */,
 				6EB5C58B2AC5892A0005236E /* HomeViewController.swift */,
 				6EB5C59F2AC58CF20005236E /* HomeViewController.storyboard */,
+				6EB5C5C02ACC0A010005236E /* HomeViewViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -106,6 +140,29 @@
 				6EB5C5A12AC58D1D0005236E /* Storyboarded.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		6EB5C5DE2ACC7B640005236E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6EB5C5CD2ACC245F0005236E /* UIColor.swift */,
+				6EB5C5CF2ACC29DB0005236E /* CGColor.swift */,
+				6EB5C5DC2ACC7B3F0005236E /* String.swift */,
+				6EB5C5D72ACC50920005236E /* Date.swift */,
+				6EB5C5D12ACC2AC90005236E /* UIView.swift */,
+				6EB5C5CB2ACC20F90005236E /* UIFont.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6EB5C5DF2ACC7B880005236E /* PhotoCell */ = {
+			isa = PBXGroup;
+			children = (
+				6EB5C5B52ACB26CE0005236E /* PhotoTableViewCell.xib */,
+				6EB5C5BE2ACC04490005236E /* PhotoCellModel.swift */,
+				6EB5C5B42ACB26CE0005236E /* PhotoTableViewCell.swift */,
+			);
+			path = PhotoCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +181,12 @@
 			dependencies = (
 			);
 			name = MarsRoverPhotos;
+			packageProductDependencies = (
+				6EB5C5C32ACC11B00005236E /* RxCocoa */,
+				6EB5C5C52ACC11B00005236E /* RxRelay */,
+				6EB5C5C72ACC11B00005236E /* RxSwift */,
+				6EB5C5DA2ACC779B0005236E /* Kingfisher */,
+			);
 			productName = MarsRoverPhotos;
 			productReference = 6EB5C5842AC5892A0005236E /* MarsRoverPhotos.app */;
 			productType = "com.apple.product-type.application";
@@ -152,6 +215,10 @@
 				Base,
 			);
 			mainGroup = 6EB5C57B2AC5892A0005236E;
+			packageReferences = (
+				6EB5C5C22ACC11B00005236E /* XCRemoteSwiftPackageReference "RxSwift" */,
+				6EB5C5D92ACC779B0005236E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 6EB5C5852AC5892A0005236E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -166,6 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EB5C5B72ACB26CE0005236E /* PhotoTableViewCell.xib in Resources */,
 				6EB5C5942AC5892C0005236E /* LaunchScreen.storyboard in Resources */,
 				6EB5C5912AC5892C0005236E /* Assets.xcassets in Resources */,
 				6EB5C5A02AC58CF20005236E /* HomeViewController.storyboard in Resources */,
@@ -179,11 +247,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EB5C5C12ACC0A010005236E /* HomeViewViewModel.swift in Sources */,
+				6EB5C5B62ACB26CE0005236E /* PhotoTableViewCell.swift in Sources */,
 				6EB5C59C2AC5895A0005236E /* Coordinator.swift in Sources */,
 				6EB5C58C2AC5892A0005236E /* HomeViewController.swift in Sources */,
 				6EB5C59E2AC589830005236E /* AppCoordinator.swift in Sources */,
+				6EB5C5D82ACC50920005236E /* Date.swift in Sources */,
 				6EB5C5882AC5892A0005236E /* AppDelegate.swift in Sources */,
 				6EB5C5A42AC58E390005236E /* HomeCoordinator.swift in Sources */,
+				6EB5C5CC2ACC20F90005236E /* UIFont.swift in Sources */,
+				6EB5C5CE2ACC245F0005236E /* UIColor.swift in Sources */,
+				6EB5C5D22ACC2AC90005236E /* UIView.swift in Sources */,
+				6EB5C5CA2ACC13FC0005236E /* PhotoModel.swift in Sources */,
+				6EB5C5D02ACC29DB0005236E /* CGColor.swift in Sources */,
+				6EB5C5DD2ACC7B3F0005236E /* String.swift in Sources */,
+				6EB5C5BF2ACC04490005236E /* PhotoCellModel.swift in Sources */,
 				6EB5C5A22AC58D1D0005236E /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,6 +466,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6EB5C5C22ACC11B00005236E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		6EB5C5D92ACC779B0005236E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6EB5C5C32ACC11B00005236E /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6EB5C5C22ACC11B00005236E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		6EB5C5C52ACC11B00005236E /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6EB5C5C22ACC11B00005236E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		6EB5C5C72ACC11B00005236E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6EB5C5C22ACC11B00005236E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		6EB5C5DA2ACC779B0005236E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6EB5C5D92ACC779B0005236E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6EB5C57C2AC5892A0005236E /* Project object */;
 }

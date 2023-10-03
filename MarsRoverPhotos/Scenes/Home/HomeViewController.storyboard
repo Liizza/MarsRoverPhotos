@@ -15,16 +15,128 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kxV-nk-gJe">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="199"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MARS.CAMERA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gho-0p-AsK">
+                                        <rect key="frame" x="18.999999999999986" y="56" width="247.66666666666663" height="40.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNQ-Nn-YVY">
+                                        <rect key="frame" x="19.000000000000004" y="98.666666666666671" width="38.333333333333343" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akf-8c-w3N">
+                                        <rect key="frame" x="332" y="68" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="5Qg-Sa-7FU"/>
+                                            <constraint firstAttribute="width" secondItem="akf-8c-w3N" secondAttribute="height" multiplier="1:1" id="Lo0-Do-Ww1"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="calendar"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGi-ex-0qD">
+                                        <rect key="frame" x="335" y="141" width="38" height="38"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="bGi-ex-0qD" secondAttribute="height" multiplier="1:1" id="7tC-8D-fXL"/>
+                                            <constraint firstAttribute="height" constant="38" id="FOP-BD-muF"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="add"/>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="jLW-Ga-7rh">
+                                        <rect key="frame" x="20" y="141" width="292" height="38"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zer-u6-xRj">
+                                                <rect key="frame" x="0.0" y="0.0" width="140" height="38"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="YuU-cz-tIj"/>
+                                                    <constraint firstAttribute="height" constant="38" id="u3Y-Zb-stD"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="rover" imagePlacement="leading" title="All" imagePadding="6" titleAlignment="leading">
+                                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="7" bottom="0.0" trailing="0.0"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibC-06-OgO">
+                                                <rect key="frame" x="152" y="0.0" width="140" height="38"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="3jO-rK-Axi"/>
+                                                    <constraint firstAttribute="width" constant="140" id="EMW-wo-OnT"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="camera" imagePlacement="leading" title="All" imagePadding="6" titleAlignment="leading">
+                                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="7" bottom="0.0" trailing="0.0"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bGi-ex-0qD" secondAttribute="trailing" constant="20" id="HaJ-CM-A3D"/>
+                                    <constraint firstAttribute="trailing" secondItem="akf-8c-w3N" secondAttribute="trailing" constant="17" id="MRX-LJ-PmH"/>
+                                    <constraint firstItem="Gho-0p-AsK" firstAttribute="top" secondItem="kxV-nk-gJe" secondAttribute="top" constant="56" id="S7V-XE-jYj"/>
+                                    <constraint firstItem="jLW-Ga-7rh" firstAttribute="leading" secondItem="kxV-nk-gJe" secondAttribute="leading" constant="20" id="a7R-7k-nlS"/>
+                                    <constraint firstItem="akf-8c-w3N" firstAttribute="top" secondItem="kxV-nk-gJe" secondAttribute="top" constant="68" id="dFM-LN-iiM"/>
+                                    <constraint firstItem="jLW-Ga-7rh" firstAttribute="top" secondItem="dNQ-Nn-YVY" secondAttribute="bottom" constant="22" id="iwR-1r-Iob"/>
+                                    <constraint firstAttribute="bottom" secondItem="jLW-Ga-7rh" secondAttribute="bottom" constant="20" id="lxX-bp-Pec"/>
+                                    <constraint firstItem="dNQ-Nn-YVY" firstAttribute="top" secondItem="Gho-0p-AsK" secondAttribute="bottom" constant="2" id="mj9-F1-8Cp"/>
+                                    <constraint firstItem="Gho-0p-AsK" firstAttribute="leading" secondItem="kxV-nk-gJe" secondAttribute="leading" constant="19" id="vFM-3X-CHm"/>
+                                    <constraint firstItem="dNQ-Nn-YVY" firstAttribute="leading" secondItem="kxV-nk-gJe" secondAttribute="leading" constant="19" id="yg7-v9-0Rm"/>
+                                    <constraint firstAttribute="bottom" secondItem="bGi-ex-0qD" secondAttribute="bottom" constant="20" id="zpD-on-LZh"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HPJ-uc-x7L">
+                                <rect key="frame" x="0.0" y="199" width="393" height="653"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <sections/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="HPJ-uc-x7L" secondAttribute="trailing" id="HvF-vK-QIl"/>
+                            <constraint firstAttribute="bottom" secondItem="HPJ-uc-x7L" secondAttribute="bottom" id="TIl-I6-Nae"/>
+                            <constraint firstItem="kxV-nk-gJe" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="TKs-R3-nal"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kxV-nk-gJe" secondAttribute="trailing" id="Uxq-2c-yC0"/>
+                            <constraint firstItem="HPJ-uc-x7L" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="j09-uP-tCJ"/>
+                            <constraint firstItem="HPJ-uc-x7L" firstAttribute="top" secondItem="kxV-nk-gJe" secondAttribute="bottom" id="lTi-J5-fi0"/>
+                            <constraint firstItem="kxV-nk-gJe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="nLD-Gf-Ltj"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="eyf-rF-EQq"/>
+                    <connections>
+                        <outlet property="calendarButton" destination="akf-8c-w3N" id="s8H-ab-bRv"/>
+                        <outlet property="cameraFilterButton" destination="ibC-06-OgO" id="Udn-lm-TiO"/>
+                        <outlet property="dateLabel" destination="dNQ-Nn-YVY" id="xy9-Zb-rgP"/>
+                        <outlet property="mainLabel" destination="Gho-0p-AsK" id="rIE-Af-iSV"/>
+                        <outlet property="photosTableView" destination="HPJ-uc-x7L" id="pRC-Vo-A2V"/>
+                        <outlet property="roverFilterButton" destination="Zer-u6-xRj" id="Q4f-XT-xtp"/>
+                        <outlet property="saveFiltersButton" destination="bGi-ex-0qD" id="1g9-Fv-EmV"/>
+                        <outlet property="topView" destination="kxV-nk-gJe" id="73A-HN-Z63"/>
+                        <outletCollection property="filterButtons" destination="Zer-u6-xRj" collectionClass="NSMutableArray" id="tX5-10-2zs"/>
+                        <outletCollection property="filterButtons" destination="ibC-06-OgO" collectionClass="NSMutableArray" id="d50-5e-I9Q"/>
+                        <outletCollection property="filterButtons" destination="bGi-ex-0qD" collectionClass="NSMutableArray" id="kSF-vr-27r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-80" y="4"/>
+            <point key="canvasLocation" x="1280.1526717557251" y="-54.225352112676056"/>
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="24" height="24"/>
+        <image name="calendar" width="30" height="34"/>
+        <image name="camera" width="24" height="24"/>
+        <image name="rover" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
