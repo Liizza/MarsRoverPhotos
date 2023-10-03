@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol PhotoModel {
-    var camera: String {get}
-    var rover: String {get}
-    var imageName: String {get}
-    var date: String {get}
-}
-struct Photo: PhotoModel {
+/*protocol PhotoModel {
+    var camera: Camera {get}
+    var rover: Rover {get}
+    var imgSrc: String {get}
+    var earthDate: String {get}
+}*/
+/*struct Photo: PhotoModel {
     var camera: String
     
     var rover: String
@@ -22,4 +22,11 @@ struct Photo: PhotoModel {
     
     var date: String
     
+}*/
+/*protocol Camera {
+    var name: String {get}
+    var fullName: String {get}
 }
+protocol Rover {
+    var name: String { get }
+}*/

@@ -12,7 +12,7 @@ protocol PhotoCellModelProtocol {
     var cameraText: NSMutableAttributedString { get }
     var dateText: NSMutableAttributedString { get }
     var imageURL: URL? { get }
-    init(photoModel: PhotoModel)
+    init(photoModel: Photo)
 }
 
 class PhotoCellViewModel: PhotoCellModelProtocol {
@@ -41,11 +41,11 @@ class PhotoCellViewModel: PhotoCellModelProtocol {
     private var date: String
     
     
-    required init(photoModel: PhotoModel) {
-        self.roverType = photoModel.rover
-        self.cameraType = photoModel.camera
-        self.date = photoModel.date.formattedDateString() ?? ""
-        self.imageName = photoModel.imageName
+    required init(photoModel: Photo) {
+        self.roverType = photoModel.rover.name
+        self.cameraType = photoModel.camera.fullName
+        self.date = photoModel.earthDate.formattedDateString() ?? ""
+        self.imageName = photoModel.imgSrc
         
     }
     

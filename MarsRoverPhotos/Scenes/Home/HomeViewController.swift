@@ -64,10 +64,18 @@ class HomeViewController: UIViewController, Storyboarded {
     func bind() {
         guard let viewModel else { return }
         viewModel.dateLabelText.drive(dateLabel.rx.text).disposed(by: disposeBag)
-        roverFilterButton.rx.tap.asObservable().bind(to: viewModel.roverFilterButtonPressed.asObserver()).disposed(by: disposeBag)
-        cameraFilterButton.rx.tap.asObservable().bind(to: viewModel.cameraFilterButtonPressed.asObserver()).disposed(by: disposeBag)
-        saveFiltersButton.rx.tap.asObservable().bind(to: viewModel.saveFilterButtonPressed.asObserver()).disposed(by: disposeBag)
-        calendarButton.rx.tap.asObservable().bind(to: viewModel.calendarButtonPressed.asObserver()).disposed(by: disposeBag)
+        roverFilterButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
+            print("filterPressed")
+        }).disposed(by: disposeBag)
+        cameraFilterButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
+            print("filterPressed")
+        }).disposed(by: disposeBag)
+        saveFiltersButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
+            print("filterPressed")
+        }).disposed(by: disposeBag)
+        calendarButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
+            print("filterPressed")
+        }).disposed(by: disposeBag)
         viewModel.photos
             .drive(photosTableView.rx
             .items(cellIdentifier: "PhotoTableViewCell", cellType: PhotoTableViewCell.self)) { _, item, cell in

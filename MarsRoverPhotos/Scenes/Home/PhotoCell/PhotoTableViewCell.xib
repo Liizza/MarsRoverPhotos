@@ -36,7 +36,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RC-x8-Ov3">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RC-x8-Ov3">
                                         <rect key="frame" x="0.0" y="26.333333333333336" width="41.333333333333336" height="20.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -55,6 +55,7 @@
                         <constraints>
                             <constraint firstItem="ceR-Av-eQV" firstAttribute="top" secondItem="3nn-4j-Xrx" secondAttribute="top" constant="26" id="2ux-hG-NqA"/>
                             <constraint firstItem="hCZ-8e-IP1" firstAttribute="top" secondItem="3nn-4j-Xrx" secondAttribute="top" constant="10" id="Mj4-Ds-8pO"/>
+                            <constraint firstItem="hCZ-8e-IP1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ceR-Av-eQV" secondAttribute="trailing" constant="10" id="V5F-S3-eFB"/>
                             <constraint firstAttribute="height" constant="150" id="dmH-jA-Q5F"/>
                             <constraint firstItem="ceR-Av-eQV" firstAttribute="leading" secondItem="3nn-4j-Xrx" secondAttribute="leading" constant="16" id="ee9-5P-9lT"/>
                             <constraint firstAttribute="trailing" secondItem="hCZ-8e-IP1" secondAttribute="trailing" constant="10" id="psO-sw-2E4"/>

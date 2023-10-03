@@ -10,7 +10,7 @@ import UIKit
 class AppCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var window: UIWindow?
-    
+    let networkService = AlamofireNetworkService()
     init(window: UIWindow?) {
         self.window = window
     }
@@ -20,7 +20,7 @@ class AppCoordinator: Coordinator {
     func openHomeVC() {
         window?.rootViewController = nil
         let navController = UINavigationController()
-        let child = HomeCoordinator(navigationController: navController)
+        let child = HomeCoordinator(navigationController: navController, networkService: networkService)
         self.addChildCoordinator(child)
         child.start()
         window?.rootViewController = navController

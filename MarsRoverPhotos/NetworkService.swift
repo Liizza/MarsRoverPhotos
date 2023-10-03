@@ -10,33 +10,37 @@ import Alamofire
 
 protocol NetworkService {
     
-    func getPhotos(roverType: RoverType?,
-                   cameraType: CameraType?,
-                   date: String?,
+    func getPhotos(roverType: RoverType,
+                   cameraType: CameraType,
+                   date: Date,
                    completionHandler: @escaping (Result<[Photo],Error>) -> Void)
 }
 
 class AlamofireNetworkService: NetworkService {
     var apiData: ApiData = NasaApiData()
     
-    func getPhotos(roverType: RoverType?,
-                   cameraType: CameraType?,
-                   date: String?,
+    func getPhotos(roverType: RoverType,
+                   cameraType: CameraType,
+                   date: Date,
                    completionHandler: @escaping (Result<[Photo],Error>) -> Void) {
-        var queries: [PhotoQueries] = [.camera(cameraType ?? .all)]
-        if let date {
-            queries.append(.earthDate(date))
+        var queries: [PhotoQueries] = []
+        if let dateString = date.getShortFormString() {
+            queries.append(.earthDate(dateString))
+        }
+        if cameraType != .all {
+            queries.append(.camera(cameraType))
         }
         guard
-            let url = apiData.roversPhotosURL(roverType: roverType ?? .curiosity,
+            let url = apiData.roversPhotosURL(roverType: roverType,
                                               photoQueries: queries)
          else {
             return
         }
+        print(url)
         let request = AF.request(url, method: .get)
-        request.responseDecodable(of: [Photo].self) { response in
+        request.responseDecodable(of: Photos.self) { response in
             do {
-                let result = try response.result.get()
+                let result = try response.result.get().photos
                 completionHandler(.success(result))
             } catch {
                 print(error)
