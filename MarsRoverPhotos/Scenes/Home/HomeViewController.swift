@@ -66,14 +66,12 @@ class HomeViewController: UIViewController, Storyboarded {
         viewModel.dateLabelText.drive(dateLabel.rx.text).disposed(by: disposeBag)
         roverFilterButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
             self?.showPickerController(viewModel: viewModel.viewModelForRoverPickerView())
-            print("filterPressed")
         }).disposed(by: disposeBag)
         cameraFilterButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
             self?.showPickerController(viewModel: viewModel.viewModelForCameraPickerView())
-            print("filterPressed")
         }).disposed(by: disposeBag)
         saveFiltersButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
-            print("filterPressed")
+            self?.showSaveFilterAlert(viewModel: viewModel.viewModelForSaveFilterView())
         }).disposed(by: disposeBag)
         calendarButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
             self?.showDataPickerController(viewModel: viewModel.viewModelForDatPickerView())
@@ -107,6 +105,15 @@ class HomeViewController: UIViewController, Storyboarded {
         vc.viewModel = viewModel
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: false)
+    }
+    
+    func showSaveFilterAlert(viewModel: SaveFiltersViewModelProtocol) {
+        let vc = SaveFiltersViewController.instantiate()
+        vc.viewModel = viewModel
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: false)
+        
+        
     }
     
 }

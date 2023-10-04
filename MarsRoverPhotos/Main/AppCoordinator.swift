@@ -11,6 +11,7 @@ class AppCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var window: UIWindow?
     let networkService = AlamofireNetworkService()
+    let dataService = RealmDataService()
     init(window: UIWindow?) {
         self.window = window
     }
@@ -20,7 +21,7 @@ class AppCoordinator: Coordinator {
     func openHomeVC() {
         window?.rootViewController = nil
         let navController = UINavigationController()
-        let child = HomeCoordinator(navigationController: navController, networkService: networkService)
+        let child = HomeCoordinator(navigationController: navController, networkService: networkService, dataService: dataService)
         self.addChildCoordinator(child)
         child.start()
         window?.rootViewController = navController

@@ -18,6 +18,7 @@ protocol HomeViewModelProtocol {
     func viewModelForDatPickerView() -> DatePickerViewModelProtocol
     func viewModelForCameraPickerView() -> any PickerViewModelProtocol
     func viewModelForRoverPickerView() -> any PickerViewModelProtocol
+    func viewModelForSaveFilterView() -> SaveFiltersViewModelProtocol
 }
 
 class HomeViewViewModel: HomeViewModelProtocol {
@@ -27,10 +28,10 @@ class HomeViewViewModel: HomeViewModelProtocol {
         return _photos.asDriver()
     }
     let networkService: NetworkService?
+    let dataService: DataService?
     private let disposeBag = DisposeBag()
     let photoSelected = PublishSubject<IndexPath>()
     private let _dateLabelText = BehaviorRelay<String>(value: "")
-    
     let _date = BehaviorRelay<Date>(value: Date())
     private let _roverType = BehaviorRelay<RoverType>(value: .curiosity)
     
@@ -39,8 +40,9 @@ class HomeViewViewModel: HomeViewModelProtocol {
     var dateLabelText: Driver<String> {
         return _dateLabelText.asDriver()
     }
-    init(networkService: NetworkService?) {
+    init(networkService: NetworkService?, dataService: DataService?) {
         self.networkService = networkService
+        self.dataService = dataService
         bind()
         setDate()
         getPhotos()
@@ -62,7 +64,6 @@ class HomeViewViewModel: HomeViewModelProtocol {
         archiveButtonPressed.asObservable().subscribe(onNext: { [weak self] in
             print("archive pressed")
         }).disposed(by: disposeBag)
-        
     }
     private func photoForIndex(index: Int) -> Photo? {
         guard index < _photos.value.count else { return nil }
@@ -107,6 +108,17 @@ class HomeViewViewModel: HomeViewModelProtocol {
             self.getPhotos()
         }).disposed(by: disposeBag)
         return viewModel
+    }
+    func viewModelForSaveFilterView() -> SaveFiltersViewModelProtocol {
+        let viewModel = SaveFiltersViewModel()
+        viewModel.didSaveFilters.asObservable().subscribe(onNext: { [weak self] in
+            print("save")
+            self?.saveCurrentFilters()
+        }).disposed(by: disposeBag)
+        return viewModel
+    }
+    func saveCurrentFilters() {
+        dataService?.saveFilters(date: _date.value, roverType: _roverType.value, cameraType: _cameraType.value)
     }
     
 }
