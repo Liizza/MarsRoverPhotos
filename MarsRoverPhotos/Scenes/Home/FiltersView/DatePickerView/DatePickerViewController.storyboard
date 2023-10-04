@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Date Picker View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="DatePickerViewController" id="Y6W-OH-hqX" customClass="DatePickerViewController" customModule="MarsRoverPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9K-ka-oMz">
+                                <rect key="frame" x="20" y="270" width="353" height="312"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Iz-yE-2fV">
+                                        <rect key="frame" x="155.66666666666666" y="28" width="42" height="25"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vh1-30-XMq">
+                                        <rect key="frame" x="20" y="20" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="kja-u6-nRf"/>
+                                            <constraint firstAttribute="width" secondItem="Vh1-30-XMq" secondAttribute="height" multiplier="1:1" id="mGt-UT-DuX"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="cancel"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZj-8c-Mq9">
+                                        <rect key="frame" x="289" y="20" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="uZj-8c-Mq9" secondAttribute="height" multiplier="1:1" id="59x-pD-ysJ"/>
+                                            <constraint firstAttribute="width" constant="44" id="cjK-MY-9gr"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="confirm"/>
+                                    </button>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="d1v-w1-NCf">
+                                        <rect key="frame" x="28" y="76" width="297" height="216"/>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Vh1-30-XMq" firstAttribute="leading" secondItem="a9K-ka-oMz" secondAttribute="leading" constant="20" id="1jg-Al-F3F"/>
+                                    <constraint firstAttribute="bottom" secondItem="d1v-w1-NCf" secondAttribute="bottom" constant="20" id="Isi-Ad-TWz"/>
+                                    <constraint firstAttribute="trailing" secondItem="d1v-w1-NCf" secondAttribute="trailing" constant="28" id="PXA-cf-GFf"/>
+                                    <constraint firstItem="d1v-w1-NCf" firstAttribute="leading" secondItem="a9K-ka-oMz" secondAttribute="leading" constant="28" id="Vqj-BJ-0fg"/>
+                                    <constraint firstItem="7Iz-yE-2fV" firstAttribute="top" secondItem="a9K-ka-oMz" secondAttribute="top" constant="28" id="cSW-da-qLJ"/>
+                                    <constraint firstItem="7Iz-yE-2fV" firstAttribute="centerX" secondItem="a9K-ka-oMz" secondAttribute="centerX" id="eT2-lY-OmU"/>
+                                    <constraint firstItem="Vh1-30-XMq" firstAttribute="top" secondItem="a9K-ka-oMz" secondAttribute="top" constant="20" id="hyE-I3-9D2"/>
+                                    <constraint firstItem="uZj-8c-Mq9" firstAttribute="top" secondItem="a9K-ka-oMz" secondAttribute="top" constant="20" id="kLh-wt-J5o"/>
+                                    <constraint firstAttribute="trailing" secondItem="uZj-8c-Mq9" secondAttribute="trailing" constant="20" id="sRe-xD-1LY"/>
+                                    <constraint firstAttribute="height" constant="312" id="z1N-cB-bj2"/>
+                                    <constraint firstItem="d1v-w1-NCf" firstAttribute="top" secondItem="7Iz-yE-2fV" secondAttribute="bottom" constant="23" id="zRM-ib-aVq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="a9K-ka-oMz" secondAttribute="trailing" constant="20" id="BVA-mc-zJ2"/>
+                            <constraint firstItem="a9K-ka-oMz" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Bn0-Px-QTW"/>
+                            <constraint firstItem="a9K-ka-oMz" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="JE5-RS-E9x"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="Vh1-30-XMq" id="IE3-kU-cnp"/>
+                        <outlet property="chooseButton" destination="uZj-8c-Mq9" id="Qum-xP-CbK"/>
+                        <outlet property="datePicker" destination="d1v-w1-NCf" id="Cmc-Vy-FQb"/>
+                        <outlet property="mainLabel" destination="7Iz-yE-2fV" id="knh-lN-Ckr"/>
+                        <outlet property="popUpView" destination="a9K-ka-oMz" id="xWw-7h-mc3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="56" y="-2"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cancel" width="44" height="44"/>
+        <image name="confirm" width="44" height="44"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

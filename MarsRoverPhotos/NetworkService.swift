@@ -31,7 +31,7 @@ class AlamofireNetworkService: NetworkService {
             queries.append(.camera(cameraType))
         }
         guard
-            let url = apiData.roversPhotosURL(roverType: roverType,
+            let url = apiData.roversPhotosURL(roverType: roverType == .all ? .curiosity : roverType,
                                               photoQueries: queries)
          else {
             return

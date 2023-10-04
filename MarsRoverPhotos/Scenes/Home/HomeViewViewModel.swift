@@ -14,9 +14,10 @@ protocol HomeViewModelProtocol {
     var photoSelected: PublishSubject<IndexPath> { get }
     var dateLabelText: Driver<String> { get }
     var archiveButtonPressed: PublishSubject<Void> { get }
-    var dateChosen: PublishSubject<Date> { get }
-    var roverTypeChosen: PublishSubject<RoverType> { get }
-    var cameraTypeChosen: PublishSubject<CameraType> { get }
+    var _date: BehaviorRelay<Date> { get }
+    func viewModelForDatPickerView() -> DatePickerViewModelProtocol
+    func viewModelForCameraPickerView() -> any PickerViewModelProtocol
+    func viewModelForRoverPickerView() -> any PickerViewModelProtocol
 }
 
 class HomeViewViewModel: HomeViewModelProtocol {
@@ -29,20 +30,20 @@ class HomeViewViewModel: HomeViewModelProtocol {
     private let disposeBag = DisposeBag()
     let photoSelected = PublishSubject<IndexPath>()
     private let _dateLabelText = BehaviorRelay<String>(value: "")
-    let dateChosen = PublishSubject<Date>()
-    private let _date = BehaviorRelay<Date>(value: Date())
+    
+    let _date = BehaviorRelay<Date>(value: Date())
     private let _roverType = BehaviorRelay<RoverType>(value: .curiosity)
-    let roverTypeChosen = PublishSubject<RoverType>()
+    
     private let _cameraType = BehaviorRelay<CameraType>(value: .all)
-    let cameraTypeChosen = PublishSubject<CameraType>()
+    
     var dateLabelText: Driver<String> {
         return _dateLabelText.asDriver()
     }
     init(networkService: NetworkService?) {
         self.networkService = networkService
         bind()
-        bindFilterElements()
         setDate()
+        getPhotos()
     }
     func getPhotos() {
         networkService?.getPhotos(roverType: _roverType.value, cameraType: _cameraType.value, date: _date.value) { [weak self] response in
@@ -63,35 +64,49 @@ class HomeViewViewModel: HomeViewModelProtocol {
         }).disposed(by: disposeBag)
         
     }
-    func bindFilterElements() {
-        dateChosen.asObservable().subscribe(onNext: { [weak self] date in
-            guard let self else { return }
-            self._date.accept(date)
-            stringForDate(date: date)
-            self.getPhotos()
-        }).disposed(by: disposeBag)
-        roverTypeChosen.asObservable().subscribe(onNext: { [weak self] roverType in
-            guard let self else { return }
-            self._roverType.accept(roverType)
-            self.getPhotos()
-        }).disposed(by: disposeBag)
-        cameraTypeChosen.asObservable().subscribe(onNext: { [weak self] cameraType in
-            guard let self else { return }
-            self._cameraType.accept(cameraType)
-            self.getPhotos()
-        }).disposed(by: disposeBag)
-    }
     private func photoForIndex(index: Int) -> Photo? {
         guard index < _photos.value.count else { return nil }
         return _photos.value[index]
     }
     func setDate() {
         let calendar = Calendar.current
-        let date = calendar.date(byAdding: .day, value: -1, to: calendar.startOfDay(for: Date()))
-        dateChosen.asObserver().onNext(date ?? Date())
+        guard
+            let date = calendar.date(byAdding: .day, value: -2, to: calendar.startOfDay(for: Date()))
+        else { return }
+        _date.accept(date)
+        stringForDate(date: date)
     }
     private func stringForDate(date: Date) {
         guard let string = date.getFullFormString() else { return }
         _dateLabelText.accept(string)
     }
+    func viewModelForDatPickerView() -> DatePickerViewModelProtocol {
+        let viewModel = DatePickerViewModel(date: self._date.value)
+        viewModel.chooseButtonPressed.asObservable().subscribe(onNext: { [weak self] date in
+            guard let self else { return }
+            self._date.accept(date)
+            stringForDate(date: date)
+            self.getPhotos()
+        }).disposed(by: disposeBag)
+        return viewModel
+    }
+    func viewModelForCameraPickerView() -> any PickerViewModelProtocol {
+        let viewModel = CameraPickerViewModel(arrayOfItems: CameraType.allCases)
+        viewModel.didChooseFilter.asObservable().subscribe(onNext: { [weak self] camera in
+            guard let self else { return }
+            self._cameraType.accept(camera)
+            self.getPhotos()
+        }).disposed(by: disposeBag)
+        return viewModel
+    }
+    func viewModelForRoverPickerView() -> any PickerViewModelProtocol {
+        let viewModel = RoverPickerViewModel(arrayOfItems: RoverType.allCases)
+        viewModel.didChooseFilter.asObservable().subscribe(onNext: { [weak self] rover in
+            guard let self else { return }
+            self._roverType.accept(rover)
+            self.getPhotos()
+        }).disposed(by: disposeBag)
+        return viewModel
+    }
+    
 }

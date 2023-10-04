@@ -103,13 +103,13 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="HPJ-uc-x7L" secondAttribute="trailing" id="HvF-vK-QIl"/>
+                            <constraint firstAttribute="trailing" secondItem="HPJ-uc-x7L" secondAttribute="trailing" id="HvF-vK-QIl"/>
                             <constraint firstAttribute="bottom" secondItem="HPJ-uc-x7L" secondAttribute="bottom" id="TIl-I6-Nae"/>
                             <constraint firstItem="kxV-nk-gJe" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="TKs-R3-nal"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kxV-nk-gJe" secondAttribute="trailing" id="Uxq-2c-yC0"/>
-                            <constraint firstItem="HPJ-uc-x7L" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="j09-uP-tCJ"/>
+                            <constraint firstAttribute="trailing" secondItem="kxV-nk-gJe" secondAttribute="trailing" id="Uxq-2c-yC0"/>
+                            <constraint firstItem="HPJ-uc-x7L" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="j09-uP-tCJ"/>
                             <constraint firstItem="HPJ-uc-x7L" firstAttribute="top" secondItem="kxV-nk-gJe" secondAttribute="bottom" id="lTi-J5-fi0"/>
-                            <constraint firstItem="kxV-nk-gJe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="nLD-Gf-Ltj"/>
+                            <constraint firstItem="kxV-nk-gJe" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="nLD-Gf-Ltj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eyf-rF-EQq"/>

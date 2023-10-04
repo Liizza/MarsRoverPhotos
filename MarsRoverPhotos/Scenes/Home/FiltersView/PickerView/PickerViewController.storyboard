@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Picker View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="PickerViewController" id="Y6W-OH-hqX" customClass="PickerViewController" customModule="MarsRoverPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fst-9I-qom">
+                                <rect key="frame" x="0.0" y="546" width="393" height="306"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exi-3p-Mun">
+                                        <rect key="frame" x="329" y="20" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="QrU-TQ-hX2"/>
+                                            <constraint firstAttribute="width" secondItem="exi-3p-Mun" secondAttribute="height" multiplier="1:1" id="lr8-YM-I0S"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="confirm"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4c1-8y-zwj">
+                                        <rect key="frame" x="20" y="20" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="4c1-8y-zwj" secondAttribute="height" multiplier="1:1" id="6Po-2t-Wls"/>
+                                            <constraint firstAttribute="width" constant="44" id="XfV-xu-RJT"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="cancel"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6L-Ps-ToN">
+                                        <rect key="frame" x="175.66666666666666" y="28" width="42" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView tag="4" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="g2C-qQ-hVu">
+                                        <rect key="frame" x="20" y="76" width="353" height="222"/>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="4c1-8y-zwj" firstAttribute="leading" secondItem="Fst-9I-qom" secondAttribute="leading" constant="20" id="2y0-cS-eZH"/>
+                                    <constraint firstItem="exi-3p-Mun" firstAttribute="width" secondItem="exi-3p-Mun" secondAttribute="height" multiplier="1:1" id="5hG-mX-w5h"/>
+                                    <constraint firstItem="4c1-8y-zwj" firstAttribute="width" secondItem="4c1-8y-zwj" secondAttribute="height" multiplier="1:1" id="FDt-pa-yty"/>
+                                    <constraint firstAttribute="height" constant="306" id="HUB-3C-v8x"/>
+                                    <constraint firstAttribute="trailing" secondItem="exi-3p-Mun" secondAttribute="trailing" constant="20" id="OJS-vg-9JX"/>
+                                    <constraint firstAttribute="bottom" secondItem="g2C-qQ-hVu" secondAttribute="bottom" constant="8" id="QrK-E6-xxs"/>
+                                    <constraint firstItem="m6L-Ps-ToN" firstAttribute="top" secondItem="Fst-9I-qom" secondAttribute="top" constant="28" id="Tra-y4-89H"/>
+                                    <constraint firstItem="exi-3p-Mun" firstAttribute="top" secondItem="Fst-9I-qom" secondAttribute="top" constant="20" id="XPf-Wz-gqn"/>
+                                    <constraint firstItem="g2C-qQ-hVu" firstAttribute="leading" secondItem="Fst-9I-qom" secondAttribute="leading" constant="20" id="Y3Y-cR-puy"/>
+                                    <constraint firstItem="g2C-qQ-hVu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="exi-3p-Mun" secondAttribute="bottom" id="ZKw-TS-o7F"/>
+                                    <constraint firstAttribute="bottom" secondItem="g2C-qQ-hVu" secondAttribute="centerY" constant="119" id="c1B-tL-yQ7"/>
+                                    <constraint firstItem="m6L-Ps-ToN" firstAttribute="centerX" secondItem="Fst-9I-qom" secondAttribute="centerX" id="jin-dO-ua2"/>
+                                    <constraint firstAttribute="trailing" secondItem="g2C-qQ-hVu" secondAttribute="trailing" constant="20" id="tBn-dc-opx"/>
+                                    <constraint firstItem="4c1-8y-zwj" firstAttribute="top" secondItem="Fst-9I-qom" secondAttribute="top" constant="20" id="wDZ-0E-6DI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Fst-9I-qom" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="9QO-Ht-chF"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Fst-9I-qom" secondAttribute="trailing" id="f9K-ON-Pzn"/>
+                            <constraint firstAttribute="bottom" secondItem="Fst-9I-qom" secondAttribute="bottom" id="t1n-yC-eYe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="4c1-8y-zwj" id="klg-1w-2tq"/>
+                        <outlet property="chooseButton" destination="exi-3p-Mun" id="mgO-gs-AZz"/>
+                        <outlet property="mainLabel" destination="m6L-Ps-ToN" id="H4R-pR-ASJ"/>
+                        <outlet property="pickerView" destination="g2C-qQ-hVu" id="2Rf-FR-3Fo"/>
+                        <outlet property="popUpView" destination="Fst-9I-qom" id="zZc-3h-71S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-44" y="2"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cancel" width="44" height="44"/>
+        <image name="confirm" width="44" height="44"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

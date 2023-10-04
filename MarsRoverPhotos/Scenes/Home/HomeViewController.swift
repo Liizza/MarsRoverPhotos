@@ -65,16 +65,18 @@ class HomeViewController: UIViewController, Storyboarded {
         guard let viewModel else { return }
         viewModel.dateLabelText.drive(dateLabel.rx.text).disposed(by: disposeBag)
         roverFilterButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
+            self?.showPickerController(viewModel: viewModel.viewModelForRoverPickerView())
             print("filterPressed")
         }).disposed(by: disposeBag)
         cameraFilterButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
+            self?.showPickerController(viewModel: viewModel.viewModelForCameraPickerView())
             print("filterPressed")
         }).disposed(by: disposeBag)
         saveFiltersButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
             print("filterPressed")
         }).disposed(by: disposeBag)
         calendarButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
-            print("filterPressed")
+            self?.showDataPickerController(viewModel: viewModel.viewModelForDatPickerView())
         }).disposed(by: disposeBag)
         viewModel.photos
             .drive(photosTableView.rx
@@ -94,5 +96,18 @@ class HomeViewController: UIViewController, Storyboarded {
             archiveButton.bottomAnchor.constraint(equalTo: photosTableView.bottomAnchor, constant: -21)
         ])
     }
+    func showDataPickerController(viewModel: DatePickerViewModelProtocol) {
+        var vc = DatePickerViewController.instantiate()
+        vc.viewModel = viewModel
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: false)
+    }
+    func showPickerController(viewModel: any PickerViewModelProtocol) {
+        var vc = PickerViewController.instantiate()
+        vc.viewModel = viewModel
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: false)
+    }
+    
 }
 
