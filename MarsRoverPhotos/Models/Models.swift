@@ -6,11 +6,8 @@
 //
 
 import Foundation
-protocol FilterOption {
-    var fullName: String { get }
-}
 
-enum RoverType: String, CaseIterable, FilterOption {
+enum RoverType: String, CaseIterable {
     case all
     case curiosity
     case opportunity
@@ -19,7 +16,7 @@ enum RoverType: String, CaseIterable, FilterOption {
     var fullName: String {
         switch self {
         case .all: return "All"
-        case .curiosity: return "Curiocity"
+        case .curiosity: return "Curiosity"
         case .opportunity: return " Oportunity"
         case .spirit: return "Spirit"
         }
@@ -27,7 +24,7 @@ enum RoverType: String, CaseIterable, FilterOption {
     
 }
 
-enum CameraType: String, CaseIterable, FilterOption {
+enum CameraType: String, CaseIterable {
     case all
     case fhaz
     case rhaz

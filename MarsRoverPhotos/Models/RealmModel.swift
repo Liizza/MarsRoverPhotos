@@ -8,7 +8,14 @@
 import Foundation
 import RealmSwift
 
-class RealmFiltersModel: Object {
+protocol FiltersModel {
+    var id: String { get }
+    var date: Date { get }
+    var roverEnum: RoverType { get }
+    var cameraEnum: CameraType { get }
+}
+
+class RealmFiltersModel: Object, FiltersModel {
     @Persisted(primaryKey: true) var id: String
     @Persisted var date: Date
     @Persisted var roverType: String

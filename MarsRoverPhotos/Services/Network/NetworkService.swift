@@ -36,7 +36,6 @@ class AlamofireNetworkService: NetworkService {
          else {
             return
         }
-        print(url)
         let request = AF.request(url, method: .get)
         request.responseDecodable(of: Photos.self) { response in
             do {

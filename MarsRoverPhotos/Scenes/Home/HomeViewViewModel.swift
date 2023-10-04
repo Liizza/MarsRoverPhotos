@@ -13,7 +13,7 @@ protocol HomeViewModelProtocol {
     var photos: Driver<[Photo]> { get }
     var photoSelected: PublishSubject<IndexPath> { get }
     var dateLabelText: Driver<String> { get }
-    var archiveButtonPressed: PublishSubject<Void> { get }
+    var openHistoryVC: PublishSubject<Void> { get }
     var _date: BehaviorRelay<Date> { get }
     func viewModelForDatPickerView() -> DatePickerViewModelProtocol
     func viewModelForCameraPickerView() -> any PickerViewModelProtocol
@@ -22,7 +22,7 @@ protocol HomeViewModelProtocol {
 }
 
 class HomeViewViewModel: HomeViewModelProtocol {
-    var archiveButtonPressed = PublishSubject<Void>()
+    var openHistoryVC = PublishSubject<Void>()
     private let _photos = BehaviorRelay<[Photo]>(value: [])
     var photos: Driver<[Photo]> {
         return _photos.asDriver()
@@ -43,6 +43,7 @@ class HomeViewViewModel: HomeViewModelProtocol {
     init(networkService: NetworkService?, dataService: DataService?) {
         self.networkService = networkService
         self.dataService = dataService
+        
         bind()
         setDate()
         getPhotos()
@@ -60,9 +61,6 @@ class HomeViewViewModel: HomeViewModelProtocol {
     func bind() {
         photoSelected.asObservable().subscribe(onNext: { [weak self] indexPath in
             print(self?.photoForIndex(index: indexPath.row)?.rover)
-        }).disposed(by: disposeBag)
-        archiveButtonPressed.asObservable().subscribe(onNext: { [weak self] in
-            print("archive pressed")
         }).disposed(by: disposeBag)
     }
     private func photoForIndex(index: Int) -> Photo? {
@@ -119,6 +117,12 @@ class HomeViewViewModel: HomeViewModelProtocol {
     }
     func saveCurrentFilters() {
         dataService?.saveFilters(date: _date.value, roverType: _roverType.value, cameraType: _cameraType.value)
+    }
+    func setFilters(date: Date, roverType: RoverType, cameraType: CameraType) {
+        self._date.accept(date)
+        self._cameraType.accept(cameraType)
+        self._roverType.accept(roverType)
+        getPhotos()
     }
     
 }

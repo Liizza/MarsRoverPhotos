@@ -95,7 +95,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HPJ-uc-x7L">
-                                <rect key="frame" x="0.0" y="199" width="393" height="653"/>
+                                <rect key="frame" x="0.0" y="213" width="393" height="639"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <sections/>
                             </tableView>
@@ -108,11 +108,15 @@
                             <constraint firstItem="kxV-nk-gJe" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="TKs-R3-nal"/>
                             <constraint firstAttribute="trailing" secondItem="kxV-nk-gJe" secondAttribute="trailing" id="Uxq-2c-yC0"/>
                             <constraint firstItem="HPJ-uc-x7L" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="j09-uP-tCJ"/>
-                            <constraint firstItem="HPJ-uc-x7L" firstAttribute="top" secondItem="kxV-nk-gJe" secondAttribute="bottom" id="lTi-J5-fi0"/>
+                            <constraint firstItem="HPJ-uc-x7L" firstAttribute="top" secondItem="kxV-nk-gJe" secondAttribute="bottom" constant="14" id="lTi-J5-fi0"/>
                             <constraint firstItem="kxV-nk-gJe" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="nLD-Gf-Ltj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="eyf-rF-EQq"/>
+                    <navigationItem key="navigationItem" id="eyf-rF-EQq">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Bpd-ZR-auX">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="calendarButton" destination="akf-8c-w3N" id="s8H-ab-bRv"/>
                         <outlet property="cameraFilterButton" destination="ibC-06-OgO" id="Udn-lm-TiO"/>

@@ -82,7 +82,7 @@ class HomeViewController: UIViewController, Storyboarded {
                 cell.configure(with: PhotoCellViewModel(photoModel: item))
         }.disposed(by: disposeBag)
         photosTableView.rx.itemSelected.asObservable().bind(to: viewModel.photoSelected.asObserver()).disposed(by: disposeBag)
-        archiveButton.rx.tap.asObservable().bind(to: viewModel.archiveButtonPressed.asObserver()).disposed(by: disposeBag)
+        archiveButton.rx.tap.asObservable().bind(to: viewModel.openHistoryVC.asObserver()).disposed(by: disposeBag)
     }
     
     func addArchiveButton() {
