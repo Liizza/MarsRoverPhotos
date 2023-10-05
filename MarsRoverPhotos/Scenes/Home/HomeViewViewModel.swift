@@ -14,8 +14,8 @@ protocol HomeViewModelProtocol {
     var photoSelected: PublishSubject<IndexPath> { get }
     var dateLabelText: Driver<String> { get }
     var openHistoryVC: PublishSubject<Void> { get }
-    var _date: BehaviorRelay<Date> { get }
     var openPhotoVC: PublishSubject<String> { get }
+    var isLoading: BehaviorSubject<Bool> { get }
     func viewModelForDatPickerView() -> DatePickerViewModelProtocol
     func viewModelForCameraPickerView() -> any PickerViewModelProtocol
     func viewModelForRoverPickerView() -> any PickerViewModelProtocol
@@ -25,18 +25,22 @@ protocol HomeViewModelProtocol {
 class HomeViewViewModel: HomeViewModelProtocol {
     var openHistoryVC = PublishSubject<Void>()
     var openPhotoVC = PublishSubject<String>()
+    
     private let _photos = BehaviorRelay<[Photo]>(value: [])
     var photos: Driver<[Photo]> {
         return _photos.asDriver()
     }
-    let networkService: NetworkService?
-    let dataService: DataService?
+    
+    let isLoading = BehaviorSubject<Bool>(value: true)
+    
+    private let networkService: NetworkService?
+    private let dataService: DataService?
     private let disposeBag = DisposeBag()
+    
     let photoSelected = PublishSubject<IndexPath>()
     private let _dateLabelText = BehaviorRelay<String>(value: "")
-    let _date = BehaviorRelay<Date>(value: Date())
+    private let _date = BehaviorRelay<Date>(value: Date())
     private let _roverType = BehaviorRelay<RoverType>(value: .curiosity)
-    
     private let _cameraType = BehaviorRelay<CameraType>(value: .all)
     
     var dateLabelText: Driver<String> {
@@ -45,16 +49,18 @@ class HomeViewViewModel: HomeViewModelProtocol {
     init(networkService: NetworkService?, dataService: DataService?) {
         self.networkService = networkService
         self.dataService = dataService
-        
         bind()
         setDate()
-        getPhotos()
+        getPhotos { [weak self] in
+            self?.isLoading.onNext(false)
+        }
     }
-    func getPhotos() {
+    func getPhotos(complection: @escaping (() -> ()) = {}) {
         networkService?.getPhotos(roverType: _roverType.value, cameraType: _cameraType.value, date: _date.value) { [weak self] response in
             switch response {
             case .success(let arrayOfPhotos):
                 self?._photos.accept(arrayOfPhotos)
+                complection()
             case .failure(let error):
                 print(error)
             }
@@ -113,7 +119,6 @@ class HomeViewViewModel: HomeViewModelProtocol {
     func viewModelForSaveFilterView() -> SaveFiltersViewModelProtocol {
         let viewModel = SaveFiltersViewModel()
         viewModel.didSaveFilters.asObservable().subscribe(onNext: { [weak self] in
-            print("save")
             self?.saveCurrentFilters()
         }).disposed(by: disposeBag)
         return viewModel

@@ -23,6 +23,7 @@ class HomeCoordinator: Coordinator {
     func start() {
         let homeVC = HomeViewController.instantiate()
         let viewModel = HomeViewViewModel(networkService: networkService, dataService: dataService)
+        homeVC.viewModel = viewModel
         viewModel.openHistoryVC.asObservable().subscribe(onNext: { [weak self] in
             self?.openHistoryViewController()
         }).disposed(by: disposeBag)
@@ -32,8 +33,13 @@ class HomeCoordinator: Coordinator {
         setNewFilters.asObservable().subscribe(onNext: { filter in
             viewModel.setFilters(date: filter.date, roverType: filter.roverEnum, cameraType: filter.cameraEnum)
         }).disposed(by: disposeBag)
-        homeVC.viewModel = viewModel
-        navigationController.pushViewController(homeVC, animated: false)
+        viewModel.isLoading.asObservable().subscribe(onNext: { [weak self] isLoading in
+            if isLoading {
+                self?.openPreloaderVC()
+            } else {
+                self?.navigationController.setViewControllers([homeVC], animated: true)
+            }
+        }).disposed(by: disposeBag)
     }
     func openHistoryViewController() {
         let historyVC = HistoryViewController.instantiate()
@@ -49,6 +55,10 @@ class HomeCoordinator: Coordinator {
         let photoVC = PhotoViewController.instantiate()
         photoVC.viewModel = PhotoViewViewModel(imageName: imageSrc)
         navigationController.pushViewController(photoVC, animated: true)
+    }
+    func openPreloaderVC() {
+        let preloaderVC = PreloaderViewController()
+        navigationController.pushViewController(preloaderVC, animated: false)
     }
     
     func finish() {

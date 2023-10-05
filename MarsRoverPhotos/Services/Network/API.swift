@@ -19,7 +19,7 @@ struct NasaApiData: ApiData {
     func roversPhotosURL(roverType: RoverType, photoQueries: [PhotoQueries]) -> URL? {
         var queries = photoQueries.map { $0.queryItem }
         queries.append(apiKey)
-        var url = baseURL?.appending(path: "mars-photos/api/v1/rovers/\(roverType.rawValue)/photos").appending(queryItems: queries)
+        let url = baseURL?.appending(path: "mars-photos/api/v1/rovers/\(roverType.rawValue)/photos").appending(queryItems: queries)
         return url
     }
 }

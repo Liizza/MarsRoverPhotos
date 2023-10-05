@@ -95,13 +95,13 @@ class HomeViewController: UIViewController, Storyboarded {
         ])
     }
     func showDataPickerController(viewModel: DatePickerViewModelProtocol) {
-        var vc = DatePickerViewController.instantiate()
+        let vc = DatePickerViewController.instantiate()
         vc.viewModel = viewModel
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: false)
     }
     func showPickerController(viewModel: any PickerViewModelProtocol) {
-        var vc = PickerViewController.instantiate()
+        let vc = PickerViewController.instantiate()
         vc.viewModel = viewModel
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: false)

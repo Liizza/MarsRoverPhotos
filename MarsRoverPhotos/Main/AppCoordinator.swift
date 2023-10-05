@@ -28,7 +28,6 @@ class AppCoordinator: Coordinator {
         window?.makeKeyAndVisible()
     }
     
-    
     func finish() {
         
     }
