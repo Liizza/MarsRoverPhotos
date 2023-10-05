@@ -24,7 +24,10 @@ class HistoryViewController: UIViewController, Storyboarded {
         setUpUI()
         configureTableView()
         bind()
-        
+
+    }
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
     }
     func setUpUI() {
         topView.addShadow(width: 0, height: 5, color: .shadowColor(alpha: 0.12), radius: 12)
@@ -33,6 +36,9 @@ class HistoryViewController: UIViewController, Storyboarded {
         titleLabel.text = "History"
         historyEmptyLabeL.font = .bodyFont
         historyEmptyLabeL.textColor = .layerTwo
+        let backItem = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(goBack))
+        backItem.tintColor = .layerOne
+        self.navigationItem.leftBarButtonItem = backItem
     }
     func configureTableView() {
         historyTableView.dataSource = nil
