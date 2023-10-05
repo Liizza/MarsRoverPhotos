@@ -26,6 +26,9 @@ class HomeCoordinator: Coordinator {
         viewModel.openHistoryVC.asObservable().subscribe(onNext: { [weak self] in
             self?.openHistoryViewController()
         }).disposed(by: disposeBag)
+        viewModel.openPhotoVC.asObservable().subscribe(onNext: { [weak self] imageSrc in
+            self?.openPhotoVC(with: imageSrc)
+        }).disposed(by: disposeBag)
         setNewFilters.asObservable().subscribe(onNext: { filter in
             viewModel.setFilters(date: filter.date, roverType: filter.roverEnum, cameraType: filter.cameraEnum)
         }).disposed(by: disposeBag)
@@ -40,7 +43,12 @@ class HomeCoordinator: Coordinator {
             self?.navigationController.popViewController(animated: false)
         }).disposed(by: disposeBag)
         historyVC.viewModel = viewModel
-        navigationController.pushViewController(historyVC, animated: false)
+        navigationController.pushViewController(historyVC, animated: true)
+    }
+    func openPhotoVC(with imageSrc: String) {
+        let photoVC = PhotoViewController.instantiate()
+        photoVC.viewModel = PhotoViewViewModel(imageName: imageSrc)
+        navigationController.pushViewController(photoVC, animated: true)
     }
     
     func finish() {

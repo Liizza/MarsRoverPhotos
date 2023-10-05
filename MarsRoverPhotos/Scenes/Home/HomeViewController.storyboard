@@ -114,7 +114,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eyf-rF-EQq">
                         <barButtonItem key="backBarButtonItem" title=" " id="Bpd-ZR-auX">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" systemColor="systemGray2Color"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -143,6 +143,9 @@
         <image name="rover" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -15,6 +15,7 @@ protocol HomeViewModelProtocol {
     var dateLabelText: Driver<String> { get }
     var openHistoryVC: PublishSubject<Void> { get }
     var _date: BehaviorRelay<Date> { get }
+    var openPhotoVC: PublishSubject<String> { get }
     func viewModelForDatPickerView() -> DatePickerViewModelProtocol
     func viewModelForCameraPickerView() -> any PickerViewModelProtocol
     func viewModelForRoverPickerView() -> any PickerViewModelProtocol
@@ -23,6 +24,7 @@ protocol HomeViewModelProtocol {
 
 class HomeViewViewModel: HomeViewModelProtocol {
     var openHistoryVC = PublishSubject<Void>()
+    var openPhotoVC = PublishSubject<String>()
     private let _photos = BehaviorRelay<[Photo]>(value: [])
     var photos: Driver<[Photo]> {
         return _photos.asDriver()
@@ -60,7 +62,8 @@ class HomeViewViewModel: HomeViewModelProtocol {
     }
     func bind() {
         photoSelected.asObservable().subscribe(onNext: { [weak self] indexPath in
-            print(self?.photoForIndex(index: indexPath.row)?.rover)
+            guard let image = self?.photoForIndex(index: indexPath.item)?.imgSrc else { return }
+            self?.openPhotoVC.asObserver().onNext(image)
         }).disposed(by: disposeBag)
     }
     private func photoForIndex(index: Int) -> Photo? {

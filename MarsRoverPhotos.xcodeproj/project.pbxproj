@@ -56,6 +56,9 @@
 		6EB5C6162ACDF61D0005236E /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C6142ACDF61D0005236E /* HistoryTableViewCell.swift */; };
 		6EB5C6172ACDF61D0005236E /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB5C6152ACDF61D0005236E /* HistoryTableViewCell.xib */; };
 		6EB5C6192ACDFC360005236E /* HistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C6182ACDFC360005236E /* HistoryCellViewModel.swift */; };
+		6EB5C61C2ACE30C50005236E /* PhotoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EB5C61B2ACE30C50005236E /* PhotoViewController.storyboard */; };
+		6EB5C61E2ACE30F20005236E /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C61D2ACE30F20005236E /* PhotoViewController.swift */; };
+		6EB5C6202ACE31EC0005236E /* PhotoViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB5C61F2ACE31EB0005236E /* PhotoViewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +105,9 @@
 		6EB5C6142ACDF61D0005236E /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		6EB5C6152ACDF61D0005236E /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		6EB5C6182ACDFC360005236E /* HistoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellViewModel.swift; sourceTree = "<group>"; };
+		6EB5C61B2ACE30C50005236E /* PhotoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoViewController.storyboard; sourceTree = "<group>"; };
+		6EB5C61D2ACE30F20005236E /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		6EB5C61F2ACE31EB0005236E /* PhotoViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +173,7 @@
 		6EB5C5A62AC591190005236E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				6EB5C61A2ACE30A70005236E /* Photo */,
 				6EB5C60C2ACDF39B0005236E /* History */,
 				6EB5C5A72AC591500005236E /* Home */,
 				6EB5C5A32AC58E390005236E /* HomeCoordinator.swift */,
@@ -316,6 +323,16 @@
 			path = HistoryCell;
 			sourceTree = "<group>";
 		};
+		6EB5C61A2ACE30A70005236E /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				6EB5C61B2ACE30C50005236E /* PhotoViewController.storyboard */,
+				6EB5C61D2ACE30F20005236E /* PhotoViewController.swift */,
+				6EB5C61F2ACE31EB0005236E /* PhotoViewViewModel.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -393,6 +410,7 @@
 				6EB5C5F02ACD91420005236E /* PickerViewController.storyboard in Resources */,
 				6EB5C5FB2ACDD50C0005236E /* SaveFiltersViewController.storyboard in Resources */,
 				6EB5C5B72ACB26CE0005236E /* PhotoTableViewCell.xib in Resources */,
+				6EB5C61C2ACE30C50005236E /* PhotoViewController.storyboard in Resources */,
 				6EB5C5942AC5892C0005236E /* LaunchScreen.storyboard in Resources */,
 				6EB5C5EA2ACD452C0005236E /* DatePickerViewController.storyboard in Resources */,
 				6EB5C5912AC5892C0005236E /* Assets.xcassets in Resources */,
@@ -434,12 +452,14 @@
 				6EB5C5DD2ACC7B3F0005236E /* String.swift in Sources */,
 				6EB5C5F42ACDB9790005236E /* RoverPickerViewModel.swift in Sources */,
 				6EB5C5EE2ACD91280005236E /* PickerViewController.swift in Sources */,
+				6EB5C6202ACE31EC0005236E /* PhotoViewViewModel.swift in Sources */,
 				6EB5C5E82ACD44860005236E /* DatePickerViewController.swift in Sources */,
 				6EB5C5BF2ACC04490005236E /* PhotoCellModel.swift in Sources */,
 				6EB5C5A22AC58D1D0005236E /* Storyboarded.swift in Sources */,
 				6EB5C5AD2AC5A08B0005236E /* NetworkService.swift in Sources */,
 				6EB5C5F92ACDC7360005236E /* SaveFiltersViewController.swift in Sources */,
 				6EB5C5EC2ACD48770005236E /* DatePickerViewModel.swift in Sources */,
+				6EB5C61E2ACE30F20005236E /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
