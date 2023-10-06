@@ -44,13 +44,12 @@ class HomeViewViewModel: HomeViewModelProtocol {
     private let disposeBag = DisposeBag()
     
     let photoSelected = PublishSubject<IndexPath>()
-    private let _dateLabelText = BehaviorRelay<String>(value: "")
     private let _date = BehaviorRelay<Date>(value: Date())
     private let _roverType = BehaviorRelay<RoverType>(value: .curiosity)
     private let _cameraType = BehaviorRelay<CameraType>(value: .all)
     
     var dateLabelText: Driver<String> {
-        return _dateLabelText.asDriver()
+        _date.map({$0.getFullFormString() ?? "" }).asDriver(onErrorJustReturn: "")
     }
     init(networkService: NetworkService?, dataService: DataService?) {
         self.networkService = networkService
@@ -90,18 +89,12 @@ class HomeViewViewModel: HomeViewModelProtocol {
             let date = calendar.date(byAdding: .day, value: -2, to: calendar.startOfDay(for: Date()))
         else { return }
         _date.accept(date)
-        stringForDate(date: date)
-    }
-    private func stringForDate(date: Date) {
-        guard let string = date.getFullFormString() else { return }
-        _dateLabelText.accept(string)
     }
     func viewModelForDatPickerView() -> DatePickerViewModelProtocol {
         let viewModel = DatePickerViewModel(date: self._date.value)
         viewModel.chooseButtonPressed.asObservable().subscribe(onNext: { [weak self] date in
             guard let self else { return }
             self._date.accept(date)
-            stringForDate(date: date)
             self.getPhotos()
         }).disposed(by: disposeBag)
         return viewModel
@@ -141,7 +134,7 @@ class HomeViewViewModel: HomeViewModelProtocol {
         getPhotos()
     }
     func currentFiltersString() -> String {
-        let stringPresentation = "rover: \(_roverType.value.fullName), camera: \(_cameraType.value.fullName), date: \(_dateLabelText.value)"
+        let stringPresentation = "rover: \(_roverType.value.fullName), camera: \(_cameraType.value.fullName), date: \(_date.value.getFullFormString() ?? "")"
         return stringPresentation
     }
     
