@@ -99,10 +99,39 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <sections/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y93-Wn-UDr">
+                                <rect key="frame" x="100" y="293" width="193" height="266.33333333333326"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="OXf-uJ-MBG">
+                                        <rect key="frame" x="24" y="60.666666666666686" width="145" height="145"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="145" id="4Fy-5D-xDp"/>
+                                            <constraint firstAttribute="height" constant="145" id="Hwe-0u-iRa"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browsing history is empty." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jN-kg-kSc">
+                                        <rect key="frame" x="0.0" y="225.66666666666663" width="193" height="40.666666666666686"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="6jN-kg-kSc" secondAttribute="bottom" id="N5s-bH-UkR"/>
+                                    <constraint firstItem="OXf-uJ-MBG" firstAttribute="centerX" secondItem="Y93-Wn-UDr" secondAttribute="centerX" id="Pdr-YA-qYV"/>
+                                    <constraint firstAttribute="trailing" secondItem="6jN-kg-kSc" secondAttribute="trailing" id="eC6-lC-haN"/>
+                                    <constraint firstItem="6jN-kg-kSc" firstAttribute="top" secondItem="OXf-uJ-MBG" secondAttribute="bottom" constant="20" id="hGd-cE-Gl2"/>
+                                    <constraint firstItem="6jN-kg-kSc" firstAttribute="leading" secondItem="Y93-Wn-UDr" secondAttribute="leading" id="k5X-eX-nVH"/>
+                                    <constraint firstItem="OXf-uJ-MBG" firstAttribute="centerY" secondItem="Y93-Wn-UDr" secondAttribute="centerY" id="sI4-pv-nbe"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Y93-Wn-UDr" secondAttribute="trailing" constant="100" id="0TH-iC-bhv"/>
+                            <constraint firstItem="Y93-Wn-UDr" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="100" id="85x-v6-Uay"/>
                             <constraint firstAttribute="trailing" secondItem="HPJ-uc-x7L" secondAttribute="trailing" id="HvF-vK-QIl"/>
                             <constraint firstAttribute="bottom" secondItem="HPJ-uc-x7L" secondAttribute="bottom" id="TIl-I6-Nae"/>
                             <constraint firstItem="kxV-nk-gJe" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="TKs-R3-nal"/>
@@ -110,6 +139,7 @@
                             <constraint firstItem="HPJ-uc-x7L" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="j09-uP-tCJ"/>
                             <constraint firstItem="HPJ-uc-x7L" firstAttribute="top" secondItem="kxV-nk-gJe" secondAttribute="bottom" constant="14" id="lTi-J5-fi0"/>
                             <constraint firstItem="kxV-nk-gJe" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="nLD-Gf-Ltj"/>
+                            <constraint firstItem="Y93-Wn-UDr" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="oTk-Uu-fSv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eyf-rF-EQq">
@@ -121,6 +151,8 @@
                         <outlet property="calendarButton" destination="akf-8c-w3N" id="s8H-ab-bRv"/>
                         <outlet property="cameraFilterButton" destination="ibC-06-OgO" id="Udn-lm-TiO"/>
                         <outlet property="dateLabel" destination="dNQ-Nn-YVY" id="xy9-Zb-rgP"/>
+                        <outlet property="isNoDataLabel" destination="6jN-kg-kSc" id="bRW-EE-7h1"/>
+                        <outlet property="isNoDataView" destination="Y93-Wn-UDr" id="8IT-4r-xxo"/>
                         <outlet property="mainLabel" destination="Gho-0p-AsK" id="rIE-Af-iSV"/>
                         <outlet property="photosTableView" destination="HPJ-uc-x7L" id="pRC-Vo-A2V"/>
                         <outlet property="roverFilterButton" destination="Zer-u6-xRj" id="Q4f-XT-xtp"/>
@@ -140,6 +172,7 @@
         <image name="add" width="24" height="24"/>
         <image name="calendar" width="30" height="34"/>
         <image name="camera" width="24" height="24"/>
+        <image name="empty" width="290" height="290"/>
         <image name="rover" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

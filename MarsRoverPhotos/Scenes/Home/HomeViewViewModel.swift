@@ -16,6 +16,7 @@ protocol HomeViewModelProtocol {
     var openHistoryVC: PublishSubject<Void> { get }
     var openPhotoVC: PublishSubject<String> { get }
     var isLoading: BehaviorSubject<Bool> { get }
+    var isNoData: Driver<(Bool, String)> { get }
     func viewModelForDatPickerView() -> DatePickerViewModelProtocol
     func viewModelForCameraPickerView() -> any PickerViewModelProtocol
     func viewModelForRoverPickerView() -> any PickerViewModelProtocol
@@ -32,6 +33,11 @@ class HomeViewViewModel: HomeViewModelProtocol {
     }
     
     let isLoading = BehaviorSubject<Bool>(value: true)
+    
+    private let _isNoData = BehaviorRelay<(Bool, String)>(value: (false, ""))
+    var isNoData: Driver<(Bool, String)> {
+        return  _isNoData.asDriver()
+    }
     
     private let networkService: NetworkService?
     private let dataService: DataService?
@@ -57,9 +63,11 @@ class HomeViewViewModel: HomeViewModelProtocol {
     }
     func getPhotos(complection: @escaping (() -> ()) = {}) {
         networkService?.getPhotos(roverType: _roverType.value, cameraType: _cameraType.value, date: _date.value) { [weak self] response in
+            guard let self else { return }
             switch response {
             case .success(let arrayOfPhotos):
-                self?._photos.accept(arrayOfPhotos)
+                self._photos.accept(arrayOfPhotos)
+                self._photos.value.isEmpty ? self._isNoData.accept((true, self.currentFiltersString())) : self._isNoData.accept((false, self.currentFiltersString()))
                 complection()
             case .failure(let error):
                 print(error)
@@ -131,6 +139,10 @@ class HomeViewViewModel: HomeViewModelProtocol {
         self._cameraType.accept(cameraType)
         self._roverType.accept(roverType)
         getPhotos()
+    }
+    func currentFiltersString() -> String {
+        let stringPresentation = "rover: \(_roverType.value.fullName), camera: \(_cameraType.value.fullName), date: \(_dateLabelText.value)"
+        return stringPresentation
     }
     
 }

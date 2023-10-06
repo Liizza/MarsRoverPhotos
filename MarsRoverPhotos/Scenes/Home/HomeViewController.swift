@@ -17,6 +17,9 @@ class HomeViewController: UIViewController, Storyboarded {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var isNoDataLabel: UILabel!
+    @IBOutlet weak var isNoDataView: UIView!
+    
     @IBOutlet var filterButtons: [UIButton]!
     @IBOutlet weak var roverFilterButton: UIButton!
     @IBOutlet weak var calendarButton: UIButton!
@@ -52,7 +55,8 @@ class HomeViewController: UIViewController, Storyboarded {
         topView.backgroundColor = .accentOne
         dateLabel.font = .bodyTwoFont
         mainLabel.font = .largeTitleFont
-        
+        isNoDataLabel.font = .bodyFont
+        isNoDataLabel.textColor = .layerTwo
         configureTableView()
         
         addArchiveButton()
@@ -63,6 +67,16 @@ class HomeViewController: UIViewController, Storyboarded {
     }
     func bind() {
         guard let viewModel else { return }
+        viewModel.isNoData.drive(onNext: { [ weak self] isNoData, currentFilters in
+            if isNoData {
+                self?.isNoDataView.isHidden = false
+                self?.isNoDataLabel.text = "There are no photos for the selected filters: \(currentFilters). Try changing filters."
+                
+            } else {
+                self?.isNoDataView.isHidden = true
+            }
+            
+        }).disposed(by: disposeBag)
         viewModel.dateLabelText.drive(dateLabel.rx.text).disposed(by: disposeBag)
         roverFilterButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
             self?.showPickerController(viewModel: viewModel.viewModelForRoverPickerView())
