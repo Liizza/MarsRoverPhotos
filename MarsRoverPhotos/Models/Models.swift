@@ -61,7 +61,7 @@ enum CameraType: String, CaseIterable {
         switch self {
         case .fhaz, .rhaz, .navcam, .all: return RoverType.allCases
         case .pancam, .minites : return [.all, .opportunity, .spirit]
-        case .mast, .chemcam, .mahli, .mardi: return [.all, .opportunity]
+        case .mast, .chemcam, .mahli, .mardi: return [.all, .curiosity]
         }
     }
 }
