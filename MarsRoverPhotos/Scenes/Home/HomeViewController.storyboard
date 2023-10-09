@@ -62,7 +62,7 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="rover" imagePlacement="leading" title="All" imagePadding="6" titleAlignment="leading">
-                                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="7" bottom="0.0" trailing="0.0"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="7" bottom="0.0" trailing="7"/>
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibC-06-OgO">
@@ -74,7 +74,7 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="camera" imagePlacement="leading" title="All" imagePadding="6" titleAlignment="leading">
-                                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="7" bottom="0.0" trailing="0.0"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="7" bottom="0.0" trailing="7"/>
                                                 </buttonConfiguration>
                                             </button>
                                         </subviews>

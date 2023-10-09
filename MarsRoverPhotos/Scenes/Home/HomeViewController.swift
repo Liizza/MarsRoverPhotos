@@ -47,6 +47,7 @@ class HomeViewController: UIViewController, Storyboarded {
     func setUpUI() {
         for button in filterButtons {
             button.titleLabel?.font = .titleTwoFont
+            button.configuration?.titleLineBreakMode = .byTruncatingTail
             button.tintColor = .layerOne
             button.layer.cornerRadius = 10
             button.addShadow(width: 0, height: 4, color: .shadowColor(alpha: 0.1), radius: 10)
@@ -67,6 +68,8 @@ class HomeViewController: UIViewController, Storyboarded {
     }
     func bind() {
         guard let viewModel else { return }
+        viewModel.roverTypeName.drive(roverFilterButton.rx.title()).disposed(by: disposeBag)
+        viewModel.cameraTypeName.drive(cameraFilterButton.rx.title()).disposed(by: disposeBag)
         viewModel.isNoData.drive(onNext: { [ weak self] isNoData, currentFilters in
             if isNoData {
                 self?.isNoDataView.isHidden = false

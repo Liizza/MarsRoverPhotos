@@ -17,8 +17,15 @@ enum RoverType: String, CaseIterable {
         switch self {
         case .all: return "All"
         case .curiosity: return "Curiosity"
-        case .opportunity: return " Oportunity"
+        case .opportunity: return "Opportunity"
         case .spirit: return "Spirit"
+        }
+    }
+    var cameraTypes: [CameraType] {
+        switch self {
+        case .all: return CameraType.allCases
+        case .curiosity: return [ .all, .fhaz, .rhaz, .mast, .chemcam, .mahli, .mardi, .navcam]
+        case .opportunity, .spirit : return [.all, .fhaz, .rhaz, .navcam, .pancam, .minites]
         }
     }
     
@@ -48,6 +55,13 @@ enum CameraType: String, CaseIterable {
         case .pancam: return "Panoramic Camera"
         case .minites: return "Miniature Thermal Emission Spectrometer (Mini-TES)"
         case .all: return "All"
+        }
+    }
+    var roverTypes: [RoverType] {
+        switch self {
+        case .fhaz, .rhaz, .navcam, .all: return RoverType.allCases
+        case .pancam, .minites : return [.all, .opportunity, .spirit]
+        case .mast, .chemcam, .mahli, .mardi: return [.all, .opportunity]
         }
     }
 }

@@ -17,6 +17,8 @@ protocol HomeViewModelProtocol {
     var openPhotoVC: PublishSubject<String> { get }
     var isLoading: BehaviorSubject<Bool> { get }
     var isNoData: Driver<(Bool, String)> { get }
+    var roverTypeName: Driver<String> { get }
+    var cameraTypeName: Driver<String> { get }
     func viewModelForDatPickerView() -> DatePickerViewModelProtocol
     func viewModelForCameraPickerView() -> any PickerViewModelProtocol
     func viewModelForRoverPickerView() -> any PickerViewModelProtocol
@@ -38,18 +40,24 @@ class HomeViewViewModel: HomeViewModelProtocol {
     var isNoData: Driver<(Bool, String)> {
         return  _isNoData.asDriver()
     }
-    
+    private var availableRoverFilters = BehaviorRelay<[RoverType]>(value: RoverType.allCases)
+    private var availableCameraFilters = BehaviorRelay<[CameraType]>(value: CameraType.allCases)
     private let networkService: NetworkService?
     private let dataService: DataService?
     private let disposeBag = DisposeBag()
     
     let photoSelected = PublishSubject<IndexPath>()
     private let _date = BehaviorRelay<Date>(value: Date())
-    private let _roverType = BehaviorRelay<RoverType>(value: .curiosity)
+    private let _roverType = BehaviorRelay<RoverType>(value: .all)
     private let _cameraType = BehaviorRelay<CameraType>(value: .all)
-    
+    var roverTypeName: Driver<String> {
+        _roverType.map({ $0.fullName }).asDriver(onErrorJustReturn: "")
+    }
+    var cameraTypeName: Driver<String> {
+        _cameraType.map({ $0.fullName }).asDriver(onErrorJustReturn: "")
+    }
     var dateLabelText: Driver<String> {
-        _date.map({$0.getFullFormString() ?? "" }).asDriver(onErrorJustReturn: "")
+        _date.map({ $0.getFullFormString() ?? "" }).asDriver(onErrorJustReturn: "")
     }
     init(networkService: NetworkService?, dataService: DataService?) {
         self.networkService = networkService
@@ -59,6 +67,9 @@ class HomeViewViewModel: HomeViewModelProtocol {
         getPhotos { [weak self] in
             self?.isLoading.onNext(false)
         }
+        _cameraType.map({ $0.roverTypes}).bind(to: availableRoverFilters).disposed(by: disposeBag)
+        _roverType.map({ $0.cameraTypes}).bind(to: availableCameraFilters).disposed(by: disposeBag)
+        
     }
     func getPhotos(complection: @escaping (() -> ()) = {}) {
         networkService?.getPhotos(roverType: _roverType.value, cameraType: _cameraType.value, date: _date.value) { [weak self] response in
@@ -100,7 +111,7 @@ class HomeViewViewModel: HomeViewModelProtocol {
         return viewModel
     }
     func viewModelForCameraPickerView() -> any PickerViewModelProtocol {
-        let viewModel = CameraPickerViewModel(arrayOfItems: CameraType.allCases)
+        let viewModel = CameraPickerViewModel(arrayOfItems: availableCameraFilters.value)
         viewModel.didChooseFilter.asObservable().subscribe(onNext: { [weak self] camera in
             guard let self else { return }
             self._cameraType.accept(camera)
@@ -109,7 +120,7 @@ class HomeViewViewModel: HomeViewModelProtocol {
         return viewModel
     }
     func viewModelForRoverPickerView() -> any PickerViewModelProtocol {
-        let viewModel = RoverPickerViewModel(arrayOfItems: RoverType.allCases)
+        let viewModel = RoverPickerViewModel(arrayOfItems: availableRoverFilters.value)
         viewModel.didChooseFilter.asObservable().subscribe(onNext: { [weak self] rover in
             guard let self else { return }
             self._roverType.accept(rover)
