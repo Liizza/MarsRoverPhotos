@@ -35,7 +35,7 @@ class HomeViewViewModel: HomeViewModelProtocol {
     }
     
     let isLoading = BehaviorSubject<Bool>(value: true)
-    
+    private let _mostRecentDateForRover = BehaviorRelay<String?>(value: nil)
     private let _isNoData = BehaviorRelay<(Bool, String)>(value: (false, ""))
     var isNoData: Driver<(Bool, String)> {
         return  _isNoData.asDriver()
@@ -76,8 +76,24 @@ class HomeViewViewModel: HomeViewModelProtocol {
             guard let self else { return }
             switch response {
             case .success(let arrayOfPhotos):
+                if arrayOfPhotos.isEmpty {
+                    networkService?.getRoverDetails(roverType: _roverType.value) { response in
+                        switch response {
+                        case .success(let maxDate):
+                            if let maxDate = maxDate.getDate(), maxDate < self._date.value {
+                                self._mostRecentDateForRover.accept(maxDate.getFullFormString())
+                            } else {
+                                self._mostRecentDateForRover.accept(nil)
+                            }
+                            self._isNoData.accept((true, self.currentFiltersString()))
+                        case .failure(let error):
+                            print(error)
+                            self._isNoData.accept((true, self.currentFiltersString()))
+                        }
+                    }
+                }
                 self._photos.accept(arrayOfPhotos)
-                self._photos.value.isEmpty ? self._isNoData.accept((true, self.currentFiltersString())) : self._isNoData.accept((false, self.currentFiltersString()))
+                self._isNoData.accept((false, self.currentFiltersString()))
                 complection()
             case .failure(let error):
                 print(error)
@@ -145,7 +161,10 @@ class HomeViewViewModel: HomeViewModelProtocol {
         getPhotos()
     }
     func currentFiltersString() -> String {
-        let stringPresentation = "rover: \(_roverType.value.fullName), camera: \(_cameraType.value.fullName), date: \(_date.value.getFullFormString() ?? "")"
+        var stringPresentation = "There are no photos for the selected filters. Try changing filters."
+        if let recentDate = _mostRecentDateForRover.value {
+            stringPresentation.append(" Please note the most recent date for which photos of selected rover exist is \(recentDate).")
+        }
         return stringPresentation
     }
     

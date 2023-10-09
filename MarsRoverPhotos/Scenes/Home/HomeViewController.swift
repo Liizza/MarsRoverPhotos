@@ -73,7 +73,7 @@ class HomeViewController: UIViewController, Storyboarded {
         viewModel.isNoData.drive(onNext: { [ weak self] isNoData, currentFilters in
             if isNoData {
                 self?.isNoDataView.isHidden = false
-                self?.isNoDataLabel.text = "There are no photos for the selected filters: \(currentFilters). Try changing filters."
+                self?.isNoDataLabel.text = currentFilters
                 
             } else {
                 self?.isNoDataView.isHidden = true

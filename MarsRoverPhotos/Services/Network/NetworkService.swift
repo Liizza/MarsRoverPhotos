@@ -14,6 +14,10 @@ protocol NetworkService {
                    cameraType: CameraType,
                    date: Date,
                    completionHandler: @escaping (Result<[Photo],Error>) -> Void)
+    
+    func getRoverDetails(roverType: RoverType,
+                         completionHandler: @escaping (Result<String, Error>) -> Void)
+    
 }
 
 class AlamofireNetworkService: NetworkService {
@@ -47,6 +51,23 @@ class AlamofireNetworkService: NetworkService {
             }
         }
         
+    }
+    func getRoverDetails(roverType: RoverType, completionHandler: @escaping (Result<String, Error>) -> Void) {
+        guard
+            let url = apiData.roverManifestURL(roverType: roverType == .all ? .curiosity : roverType)
+        else {
+            return
+        }
+        let request = AF.request(url, method: .get)
+        request.responseDecodable(of: RoverManifest.self) { response in
+            do {
+                let result = try response.result.get().photoManifest.maxDate
+                completionHandler(.success(result))
+            } catch {
+                print(error)
+                completionHandler(.failure(error))
+            }
+        }
     }
 }
 

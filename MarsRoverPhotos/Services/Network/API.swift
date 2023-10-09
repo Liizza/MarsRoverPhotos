@@ -11,6 +11,7 @@ protocol ApiData {
     var apiKey: URLQueryItem { get }
     var baseURL: URL? { get }
     func roversPhotosURL(roverType: RoverType, photoQueries: [PhotoQueries]) -> URL?
+    func roverManifestURL(roverType: RoverType) -> URL?
 }
 
 struct NasaApiData: ApiData {
@@ -20,6 +21,10 @@ struct NasaApiData: ApiData {
         var queries = photoQueries.map { $0.queryItem }
         queries.append(apiKey)
         let url = baseURL?.appending(path: "mars-photos/api/v1/rovers/\(roverType.rawValue)/photos").appending(queryItems: queries)
+        return url
+    }
+    func roverManifestURL(roverType: RoverType) -> URL? {
+        let url = baseURL?.appending(path: "mars-photos/api/v1/manifests/\(roverType.rawValue)").appending(queryItems: [apiKey])
         return url
     }
 }
