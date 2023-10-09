@@ -29,7 +29,9 @@ class PhotoCellViewModel: PhotoCellModelProtocol {
         return attributedText(regularText: "Date: " , boldText: date)
     }
     var imageURL: URL? {
-        return URL(string: imageName)
+        var urlComponents = URLComponents(string: imageName)
+        urlComponents?.scheme = "https"
+        return urlComponents?.url
     }
     
     private var roverType: String

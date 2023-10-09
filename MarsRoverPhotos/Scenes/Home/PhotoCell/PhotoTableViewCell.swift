@@ -31,6 +31,7 @@ class PhotoTableViewCell: UITableViewCell {
     }
     func setUpUI() {
         photoImageView.layer.cornerRadius = 20
+        photoImageView.contentMode = .scaleAspectFill
         shadowView.layer.cornerRadius = 30
         shadowView.addShadow(width: 0, height: 3, color: .shadowColor(alpha: 0.08), radius: 16)
     }
